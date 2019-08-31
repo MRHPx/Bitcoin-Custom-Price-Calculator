@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bitcoin custom price calculator</title>
+	<link media="all" rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div id="wrapper">
+		<div class="calculator-box">
+			<form action="#" class="form-calculator">
+				<div class="field-holder">
+					<label for="base-price">Enter the base price</label>
+					<input type="number" class="base-price" id="base-price">
+				</div>
+				<h1>How much you wish to sell?</h1>
+				<div class="row">
+					<div class="field-holder">
+						<label for="usd">FIAT</label>
+						<input type="number" class="usd" id="usd">
+					</div>
+					<div class="field-holder">
+						<label for="bitcoin">BTC</label>
+						<input type="number" class="bitcoin" id="bitcoin">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+
+		$(document).ready(function(){
+		  $(".usd").keyup(function(){
+		  	var baseval = jQuery('.base-price').val();
+		    var usd = jQuery('.usd').val();
+		    if (usd != 0) {
+		    	var result = (usd / baseval).toFixed(6);
+		    	$('.bitcoin').val(result);
+		    }
+		    else {
+		    	$('.bitcoin').val('');	
+		    }
+		  });
+
+		  $(".bitcoin").keyup(function(){
+		  	var baseval = jQuery('.base-price').val();
+		    var usd = jQuery('.bitcoin').val();
+		    if (usd != 0) {
+		    	var result = (baseval * usd).toFixed(2);
+		    	$('.usd').val(result);
+		    }
+		    else {
+		    	$('.usd').val('');	
+		    }
+		  });
+		});
+	</script>
+	
+<div class="bg-img1 size1 overlay1 p-t-24" style="background-image: url('bg03.jpg');">
+		<div class="flex-w flex-sb-m p-l-80 p-r-74 p-b-175 respon5">
+			<div class="wrappic1 m-r-30 m-t-10 m-b-10">
+			
+			</div>
+
+
+</body>
+</html>
